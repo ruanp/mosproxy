@@ -47,6 +47,7 @@ server = http.createServer(function(req,res){
 	},function(err,imageRes,imageData){
 		var responseData, imageContentType;
 		if ( !err && imageRes && imageRes.statusCode === 200 ) {
+      res.writeHead(200);
 			res.setHeader('Content-Type', 'application/javascript');
 			imageContentType = imageRes.headers['content-type'];
 			responseData = 'data:'+imageContentType+';base64,'+imageData;
@@ -57,7 +58,7 @@ server = http.createServer(function(req,res){
 		}
 		else {
 			console.log('Failed image:', imageUrl);
-			res.writeHead(imageRes && imageRes.statusCode || 400); // bad request
+			res.writeHead((imageRes && imageRes.statusCode) || 400); // bad request
 			responseData = JSON.stringify('error:Application error');
 			res.write(callback+'('+responseData+')');
 			res.end();
