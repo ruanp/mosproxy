@@ -1,0 +1,12 @@
+{
+  "name": "mosaiq",
+  "version": "0.0.1",
+  "dependencies": {
+    "request": "2.21.x",
+    "url": "0.7.x"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.2.x"
+  }
+}
